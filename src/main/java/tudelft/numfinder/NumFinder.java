@@ -7,9 +7,10 @@ public class NumFinder {
     public void find(int[] nums) {
         for(int n : nums) {
 
-            if(n < smallest)
+            if (n < smallest)
                 smallest = n;
-            else if (n > largest)
+            //else -- the else-if causes the bug in NumFinder Main -- Fix: took out the else
+            if (n > largest)
                 largest = n;
 
         }
