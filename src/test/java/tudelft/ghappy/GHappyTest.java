@@ -2,7 +2,6 @@ package tudelft.ghappy;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -15,16 +14,16 @@ public class GHappyTest {
         this.gHappy = new GHappy();
     }
 
-    @Test
-    public void gIsHappy() {
-        String gHappyStr = "xxggxx";
-        Assertions.assertTrue(gHappy.gHappy(gHappyStr));
+    @ParameterizedTest(name = "gIsHappy")
+    @CsvSource({"ggxxxx", "xxggxx", "xxxxgg", "xxggggxx"})
+    public void gIsHappy(String gHappyStr) {
+        Assertions.assertTrue(gHappy.gHappy(gHappyStr), "String '" + gHappyStr + "' makes G sad.");
     }
 
-    @ParameterizedTest   //(name = "gHappyStr={xxgxx}, gHappyStr={xxggyygxx}")
-    @CsvSource({"xxgxx", "xxggyygxx"})
+    @ParameterizedTest(name = "gIsNotHappy")
+    @CsvSource({"xxgxx", "xxggyygxx", "gxxxx", "xxxxg"})
     public void gIsNotHappy(String gHappyStr) {
-        Assertions.assertFalse(gHappy.gHappy(gHappyStr), "String '" + gHappyStr + "' makes G not happy.");
+        Assertions.assertFalse(gHappy.gHappy(gHappyStr), "String '" + gHappyStr + "' makes G happy when it should be sad.");
     }
 
 }
