@@ -15,13 +15,13 @@ public class GHappyTest {
     }
 
     @ParameterizedTest(name = "gIsHappy")
-    @CsvSource({"ggxxxx", "xxggxx", "xxxxgg", "xxggggxx"})
+    @CsvSource({"ggxxxx", "xxggxx", "xxxxgg", "xxggggxx", "gg"})
     public void gIsHappy(String gHappyStr) {
         Assertions.assertTrue(gHappy.gHappy(gHappyStr), "String '" + gHappyStr + "' makes G sad.");
     }
 
     @ParameterizedTest(name = "gIsNotHappy")
-    @CsvSource({"xxgxx", "xxggyygxx", "gxxxx", "xxxxg"})
+    @CsvSource({"xxgxx", "xxggyygxx", "gxxxx", "xxxxg", "xx"})
     public void gIsNotHappy(String gHappyStr) {
         Assertions.assertFalse(gHappy.gHappy(gHappyStr), "String '" + gHappyStr + "' makes G happy when it should be sad.");
     }
